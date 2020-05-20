@@ -6,4 +6,5 @@ class User < ApplicationRecord
     has_many :authored_posts,
      :class_name => "Post", 
      :foreign_key => :author_id
+    has_secure_password
 end
