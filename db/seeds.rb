@@ -55,7 +55,7 @@ author2.save
 user1.books << book2
 user1.save
 
-post1 = user1.posts.build(title: "Am I Alone?", content: 'This book suuuucks? Am I wrong?')
+post1 = user1.authored_posts.build(title: "Am I Alone?", content: 'This book suuuucks? Am I wrong?')
 post1.book = book2
 post1.save
 book2.save
