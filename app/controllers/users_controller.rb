@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    helper UsersHelper
 
     def new 
         @user = User.new
