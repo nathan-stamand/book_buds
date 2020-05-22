@@ -5,7 +5,7 @@
 
 <h3>Books You've Read:</h3>
 <% if @user.books.any? %>
-    <p>Read anything good lately? <%= link_to "Add it here!", new_book_path %></p>
+    <p>Read anything good lately? <%= link_to "Add it here", new_book_path %> or <%= link_to "see if we have it!", books_path%> </p>
     <ul>
     <% @user.books.each do |book| %>
         <li>
