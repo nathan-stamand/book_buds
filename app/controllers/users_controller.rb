@@ -6,7 +6,10 @@ class UsersController < ApplicationController
 
     def create 
         @user = User.new(user_params)
-        if @user.save 
+        if User.find_by(username: @user.username) || User.find_by(email: @user.email)
+            flash[:alert] = "Username or Email already taken." 
+            render new_user_path
+        elsif @user.save 
             session[:user_id] = @user.id
             redirect_to user_path(@user) 
         else 
@@ -26,6 +29,8 @@ class UsersController < ApplicationController
             redirect_to user_path(@user)
         end
     end
+
+    
 
     private 
 
