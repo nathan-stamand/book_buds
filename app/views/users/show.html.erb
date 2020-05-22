@@ -1,0 +1,12 @@
+<h1>Welcome, <%= @user.username %>!</h1>
+
+<%= flash[:message] if flash[:message] %>
+
+<h3>Your Posts: </h3>
+<% if @user.authored_posts.any? %>
+    <% @user.authored_posts do |post| %>
+        <%= link_to post.title, post_path(post) %>
+    <% end %>
+<% else %>
+    <p>Gadzooks! You haven't made any posts! Click here to get started!</p>
+<% end %>
