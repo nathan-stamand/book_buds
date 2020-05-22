@@ -6,7 +6,12 @@ class UsersController < ApplicationController
 
     def create 
         @user = User.new(user_params)
-
+        if @user.save 
+            redirect_to user_path(@user) 
+        else 
+            flash[:alert] = "Password Confirmation Does Not Match"
+            render new_user_path
+        end
     end
 
     def show 
