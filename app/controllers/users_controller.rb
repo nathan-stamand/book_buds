@@ -9,7 +9,6 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save 
             session[:user_id] = @user.id
-            binding.pry
             redirect_to user_path(@user) 
         else 
             flash[:alert] = "Password Confirmation Does Not Match"
