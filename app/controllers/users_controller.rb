@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     def create 
         @user = User.build(user_params)
+
     end
 
     def show 
@@ -19,6 +20,6 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :email, :pages_read)
+        params.require(:user).permit(:username, :password, :email, :pages_read)
     end
 end
