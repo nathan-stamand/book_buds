@@ -4,6 +4,7 @@
 
 <h3>Your Posts: </h3>
 <% if @user.authored_posts.any? %>
+    <%= link_to "New Post", new_post_path %>
     <% @user.authored_posts do |post| %>
         <%= link_to post.title, post_path(post) %>
     <% end %>
