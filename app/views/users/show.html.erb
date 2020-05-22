@@ -3,7 +3,7 @@
 <%= flash[:message] if flash[:message] %><br><br>
 
 
-<h3>Books You've Read</h3>
+<h3>Books You've Read:</h3>
 <% if @user.books.any? %>
     <p>Read anything good lately? <%= link_to "Add it here!", new_book_path %></p>
     <ul>
@@ -13,7 +13,9 @@
         </li>
     <% end %>
     </ul>
-
+<% else %>
+    <p>Dang! No books yet! That's okay. <%= link_to "Check out our list", books_path %> or <%= link_to "make a new book!", new_book_path %></p>
+<% end %>
 
 <h3>Your Posts: </h3>
 <% if @user.authored_posts.any? %>
