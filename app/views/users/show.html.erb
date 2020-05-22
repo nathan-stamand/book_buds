@@ -1,6 +1,19 @@
 <h1>Welcome, <%= @user.username %>!</h1>
 
-<%= flash[:message] if flash[:message] %>
+<%= flash[:message] if flash[:message] %><br><br>
+
+
+<h3>Books You've Read</h3>
+<% if @user.books.any? %>
+    <p>Read anything good lately? <%= link_to "Add it here!", new_book_path %></p>
+    <ul>
+    <% @user.books.each do |book| %>
+        <li>
+            <%= link_to book.title, book_path(book) %> by <%= book.author.name %>
+        </li>
+    <% end %>
+    </ul>
+
 
 <h3>Your Posts: </h3>
 <% if @user.authored_posts.any? %>
@@ -11,4 +24,6 @@
 <% else %>
     <p>Gadzooks! You haven't made any posts! <%= link_to "Click here", new_post_path %> to get started!</p>
 <% end %>
+
+
 
