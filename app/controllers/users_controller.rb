@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
     def new 
+        if helpers.logged_in? 
+            flash[:message] = "You must log out if you would like to make a new account."
+            redirect_to user_path(helpers.current_user)
+        end
         @user = User.new
     end
 
