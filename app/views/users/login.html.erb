@@ -1,6 +1,10 @@
 <h1>Log In, Book Bud!</h1>
 
-<%= form_for @user do |f| %>
+<% if flash[:message] %>
+    <%= flash[:message] %><br><br>
+<% end %>
+
+<%= form_for @user, url: users_login_path, method: :post do |f| %>
 
     Username: <%= f.text_field :username %><br><br>
     Password: <%= f.password_field :password %><br><br>

@@ -1,5 +1,7 @@
 <h1>Welcome, <%= @user.username %>!</h1>
 
+<%= link_to "Logout", users_logout_path, method: :get %>
+
 <% if flash[:message] %>
     <%= flash[:message] %> <br><br>
 <% end %>
