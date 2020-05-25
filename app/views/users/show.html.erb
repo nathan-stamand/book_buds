@@ -27,8 +27,10 @@
     <% @user.authored_posts do |post| %>
         <%= link_to post.title, post_path(post) %>
     <% end %>
-<% else %>
+<% elsif @user.books.any? %>
     <p>Gadzooks! You haven't made any posts! <%= link_to "Click here", new_user_post_path(@user) %> to get started!</p>
+<% else %>
+    <p>Egad! You haven't got any books, and can't make a post about nothing. Click the links above to get started on a book!</p>
 <% end %>
 
 
