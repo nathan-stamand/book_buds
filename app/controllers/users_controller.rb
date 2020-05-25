@@ -24,13 +24,22 @@ class UsersController < ApplicationController
 
     def login 
         @user = helpers.current_user
-        if helpers.logged_in?
-            flash[:message] = "Please log out if you would like to log in as another user."
+        if @user
+            flash[:message] = "You are already signed in! You must log out before logging in to another account."
             redirect_to user_path(@user)
+        elsif params[:user]
+            @user = User.find_by(username: params[:user][:username])
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+        else 
+            @user = User.new
         end
     end
 
-    
+    def logout 
+        session.clear
+        redirect_to users_login_path
+    end
 
     private 
 
