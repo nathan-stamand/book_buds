@@ -20,4 +20,13 @@ class Book < ApplicationRecord
     def genre_name 
         self.genre ? self.genre.name : nil
     end 
+
+    def self.by_author(author_id)
+        where(author: author_id)
+    end
+
+    def self.in_genre(genre_id)
+        where(genre: genre_id)
+    end
+    
 end
