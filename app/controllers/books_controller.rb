@@ -7,7 +7,14 @@ class BooksController < ApplicationController
     end
 
     def create
+        @user = current_user
         @book = Book.new(book_params)
+        if @book.save 
+            redirect_to user_book_path(@user, @book)
+        else 
+            flash[:message] = "Error!"
+            render new_user_book_path(@user)
+        end
     end
 
     def edit
