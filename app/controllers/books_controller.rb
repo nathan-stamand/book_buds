@@ -24,6 +24,9 @@ class BooksController < ApplicationController
     end
 
     def show
+        @book = Book.find_by(id: params[:id])
+        @author = @book.author 
+        @genre = @book.genre
     end
 
     def destroy
