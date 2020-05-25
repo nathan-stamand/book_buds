@@ -3,13 +3,13 @@
 <%= form_for @book do |f| %>
 
     Title: <%= f.text_field :title %><br><br>
-    Author: <%= f.text_field :author, list: "authors_autocomplete" %>
+    Author: <%= f.text_field :author_name, list: "authors_autocomplete" %>
     <datalist id="authors_autocomplete">
         <% @authors.each do |author| %>
             <option value="<%= author.name %>">
         <% end %>
     </datalist><br><br>
-    Genre: <%= f.text_field :genre, list: "genres_autocomplete" %>
+    Genre: <%= f.text_field :genre_name, list: "genres_autocomplete" %>
     <datalist id="genres_autocomplete">
         <% @genres.each do |genre| %>
             <option value="<%= genre.name %>">
