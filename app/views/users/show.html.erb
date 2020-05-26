@@ -23,9 +23,9 @@
 
 <h3>Your Posts: </h3>
 <% if @user.authored_posts.any? %>
-    <%= link_to "New Post", new_post_path %>
-    <% @user.authored_posts do |post| %>
-        <%= link_to post.title, post_path(post) %>
+    <%= link_to "New Post", new_user_post_path(@user) %><br><br>
+    <% @user.authored_posts.each do |post| %>
+        <%= link_to post.title, user_post_path(post) %><br>
     <% end %>
 <% elsif @user.books.any? %>
     <p>Gadzooks! You haven't made any posts! <%= link_to "Click here", new_user_post_path(@user) %> to get started!</p>
