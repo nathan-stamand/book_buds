@@ -4,12 +4,12 @@ class BooksController < ApplicationController
         @user = current_user 
         @books = Book.all
         if !params[:author].blank?
-            @books = Book.by_author(params[:author])
+            @books = @books.by_author(params[:author])
             if !params[:genre].blank?
                 @books = @books.in_genre(params[:genre])
             end
         elsif !params[:genre].blank?
-            @books = Book.in_genre(params[:genre])
+            @books = @books.in_genre(params[:genre])
         end
         @authors = Author.all
         @genres = Genre.all
