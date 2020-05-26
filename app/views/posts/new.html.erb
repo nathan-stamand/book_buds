@@ -1,5 +1,9 @@
 <h1>New Post</h1>
 
+<% if flash[:message] %>
+    <%= flash[:message] %><br><br>
+<% end %>
+
 <%= form_for @post do |f| %>
 
     Title: <%= f.text_field :title %><br><br>
