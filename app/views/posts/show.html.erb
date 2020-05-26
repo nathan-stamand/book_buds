@@ -1,4 +1,12 @@
 <h1><%= @post.title %></h1>
 <h3>by: <%= link_to @post.author.username, user_path(@post.author) %></h3>
 
-<p><%= @post.content %></p>
+<p><%= @post.content %></p><br><br>
+
+<h2>Comment Section</h2>
+<% if !@post.comments.empty? %>
+    <% @post.comments.each do |comment| %>
+        <h5><%= link_to comment.user.username, user_path(comment.user) %>:</h5>
+        <blockquote>"<%= comment.content %>"</blockquote>
+    <% end %>
+<% end %>
