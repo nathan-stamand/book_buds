@@ -6,6 +6,16 @@ class PostsController < ApplicationController
     end
 
     def create
+        @post = Post.new(post_params)
+        @author = current_user
+        if params[:book_id].nil? 
+            flash[:message] = "You must select a book for your post."
+            render new_post_path
+        elsif @post.save
+            redirect_to post_path(@post)
+        else 
+            render new_post_path
+        end
     end
 
     def edit
