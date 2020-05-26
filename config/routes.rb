@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :authors
-  resources :genres
+  resources :authors, only: [:index, :show]
+  resources :genres, only: [:index, :show]
 
   resources :books do 
     resources :posts 
