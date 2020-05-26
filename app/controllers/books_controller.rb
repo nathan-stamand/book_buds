@@ -17,6 +17,8 @@ class BooksController < ApplicationController
         @user = current_user
         @book = Book.new(book_params)
         if @book.save 
+            @user.books << @book
+            @user.save
             redirect_to user_book_path(@user, @book)
         else 
             flash[:message] = "Error!"
