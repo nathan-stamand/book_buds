@@ -8,13 +8,15 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         @author = current_user
-        if params[:book_id].nil? 
+        if params[:post][:book_id].nil? 
             flash[:message] = "You must select a book for your post."
             render new_post_path
         elsif @post.save
-            redirect_to post_path(@post)
+            @author.posts << @post 
+            @author.save
+            redirect_to user_post_path(@author, @post)
         else 
-            render new_post_path
+            render new_user_post_path
         end
     end
 
