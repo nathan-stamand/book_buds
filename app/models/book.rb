@@ -29,4 +29,18 @@ class Book < ApplicationRecord
         where(genre: genre_id)
     end
     
+    def self.filter_books(params)
+        @books = self.all
+        if !params[:author].blank?
+            @books = @books.by_author(params[:author])
+            if !params[:genre].blank?
+                @books = @books.in_genre(params[:genre])
+            end
+        elsif !params[:genre].blank?
+            @books = @books.in_genre(params[:genre])
+        else 
+            @books = self.all
+        end
+        @books
+    end
 end

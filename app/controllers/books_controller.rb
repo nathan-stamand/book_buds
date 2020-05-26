@@ -2,15 +2,7 @@ class BooksController < ApplicationController
 
     def index 
         @user = current_user 
-        @books = Book.all
-        if !params[:author].blank?
-            @books = @books.by_author(params[:author])
-            if !params[:genre].blank?
-                @books = @books.in_genre(params[:genre])
-            end
-        elsif !params[:genre].blank?
-            @books = @books.in_genre(params[:genre])
-        end
+        @books = Book.filter_books(params)
         @authors = Author.all
         @genres = Genre.all
     end
